@@ -239,6 +239,8 @@ fi
 # ################## #
 echo "Building image '${IMAGE_NAME}' ..."
 
+cat "${DOCKERFILE}"
+
 # BUILD THE IMAGE (replace all environment variables)
 BUILD_START=$(date '+%s')
 "${CONTAINER_RUNTIME}" build --force-rm=true --no-cache=true \
