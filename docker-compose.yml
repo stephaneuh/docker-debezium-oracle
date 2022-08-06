@@ -1,0 +1,17 @@
+version: "3"
+services:
+  oracle:
+    image: oracle/database:19.3.0-ee
+    environment:
+      - ORACLE_PDB=orcl
+      - ORACLE_PWD=password
+      - INIT_SGA_SIZE=3000
+      - INIT_PGA_SIZE=1000
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    volumes:
+      - oracle_data:/opt/oracle/oradata:ro
+
+volumes:
+  oracle_data:
