@@ -93,7 +93,15 @@ http://localhost:8080/
 
 
 # Kafka-Connect
-Deploy Debezium connector  for Oracle
+## Create Kafka-connect docker image
+This step will add the debezium for oracle connector to kafka-connect
+
+```
+cd kafka-connect
+docker build -t cp-kafka-connect-dbz-ora:0.1 .
+```
+
+## Deploy Debezium connector  for Oracle
 ```
 curl --location --request POST 'http://localhost:8083/connectors' \
 --header 'Content-Type: application/json' \
