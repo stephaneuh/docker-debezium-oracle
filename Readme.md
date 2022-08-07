@@ -41,19 +41,26 @@ mkdir opt/oracle/oradata/recovery_area
 ```
 
 ```
-sqlplus
-
+ORACLE_SID=ORCLCDB sqlplus /nolog
 CONNECT sys/password AS SYSDBA
+
 alter system set db_recovery_file_dest_size = 10G;
 alter system set db_recovery_file_dest = '/opt/oracle/oradata/recovery_area' scope=spfile;
 shutdown immediate
 startup mount
 alter database archivelog;
 alter database open;
--- Should now "Database log mode: Archive Mode"
 archive log list
+-- Should show "Database log mode: Archive Mode"
 
 ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
+
+exit;
+```
+
+Create an APP user:
+```
+sqlplus sys/password@//localhost:1521/ORCLPDB1 as sysdba
 
 -- Create user 'appuser01' and schema 'appuser01'
 CREATE USER appuser01 IDENTIFIED BY password;
