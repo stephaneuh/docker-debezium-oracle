@@ -1,6 +1,12 @@
 # Replicate Oracle tables to Snowflake tables using Change Data Capture
 
-
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
 
 # Prerequisites
 ## Create Kafka-connect docker image
