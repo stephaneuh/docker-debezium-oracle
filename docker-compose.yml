@@ -99,3 +99,15 @@ services:
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
       - KAFKA_CLUSTERS_0_KAFKACONNECT_0_NAME=KC-local
       - KAFKA_CLUSTERS_0_KAFKACONNECT_0_ADDRESS=http://connect:8083
+  debezium-ui:
+    image: debezium/debezium-ui
+    container_name: debezium-ui
+    depends_on:
+      - connect
+    ports:
+      - "8082:8080"
+    environment:
+      - KAFKA_CONNECT_URIS=http://connect:8083
+
+
+
