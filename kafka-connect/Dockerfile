@@ -16,6 +16,5 @@
 
 FROM confluentinc/cp-kafka-connect:5.4.9-1-ubi8
 
-ENV CONNECT_PLUGIN_PATH="/usr/share/java,/usr/share/confluent-hub-components"
+COPY debezium-connector-oracle /usr/share/java/debezium-connector-oracle
 
-RUN confluent-hub install  --no-prompt confluentinc/kafka-connect-oracle-cdc:2.1.1
