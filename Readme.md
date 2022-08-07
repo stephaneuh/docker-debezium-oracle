@@ -1,4 +1,4 @@
-# Setup to replicate Oracle tables to Snowflake tables using Change Data Capture
+# Replicate Oracle tables to Snowflake tables using Change Data Capture
 
 
 
