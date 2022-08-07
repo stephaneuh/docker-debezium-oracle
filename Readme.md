@@ -19,7 +19,7 @@ cd oracle/dockerfiles
 
 The new image is named: **oracle/database:19.3.0-ee**
 
-# Start docker-compose
+# Start docker-compose file
 
 ```
 docker-compose up -d
@@ -74,7 +74,7 @@ exit;
 ```
 
 
-### Creating the connector’s LogMiner user
+## Creating the connector’s LogMiner user
 ```
 sqlplus sys/password@//localhost:1521/ORCLCDB as sysdba
 CREATE TABLESPACE logminer_tbs DATAFILE '/opt/oracle/oradata/ORCLCDB/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
@@ -120,11 +120,11 @@ GRANT SELECT ON V_$TRANSACTION TO c##dbzuser CONTAINER=ALL;
 exit;
 ```
 
-# Kafka
+# Kafka configs
 ## Kafka-ui URL
 http://localhost:8080/
 
-
+# Kafka-Connect configs
 ## Deploy Debezium connector  for Oracle
 ```
 curl --location --request POST 'http://localhost:8083/connectors' \
