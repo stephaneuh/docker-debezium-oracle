@@ -9,12 +9,14 @@ sqlplus pdbadmin/password@//localhost:1521/ORCLPDB1
 (Source: https://debezium.io/documentation/reference/stable/connectors/oracle.html)
 
 From the Oracle container terminal:
-
+```
 mkdir opt/oracle/oradata/recovery_area
+```
 
+```
 sqlplus
 
-CONNECT sys/top_secret AS SYSDBA
+CONNECT sys/password AS SYSDBA
 alter system set db_recovery_file_dest_size = 10G;
 alter system set db_recovery_file_dest = '/opt/oracle/oradata/recovery_area' scope=spfile;
 shutdown immediate
@@ -35,16 +37,21 @@ GRANT CREATE SESSION TO appuser01;
 GRANT UNLIMITED TABLESPACE TO appuser01;
 
 exit;
+```
 
--- Creating the connector’s LogMiner user
+
+### Creating the connector’s LogMiner user
+```
 sqlplus sys/password@//localhost:1521/ORCLCDB as sysdba
 CREATE TABLESPACE logminer_tbs DATAFILE '/opt/oracle/oradata/ORCLCDB/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
 exit;
-
+```
+```
 sqlplus sys/password@//localhost:1521/ORCLPDB1 as sysdba
 CREATE TABLESPACE logminer_tbs DATAFILE '/opt/oracle/oradata/ORCLCDB/ORCLPDB1/logminer_tbs.dbf' SIZE 25M REUSE AUTOEXTEND ON MAXSIZE UNLIMITED;
 exit;
-
+```
+```
 sqlplus sys/password@//localhost:1521/ORCLCDB as sysdba
 
 CREATE USER c##dbzuser IDENTIFIED BY dbz DEFAULT TABLESPACE logminer_tbs QUOTA UNLIMITED ON logminer_tbs CONTAINER=ALL;
@@ -77,6 +84,7 @@ GRANT SELECT ON V_$ARCHIVE_DEST_STATUS TO c##dbzuser CONTAINER=ALL;
 GRANT SELECT ON V_$TRANSACTION TO c##dbzuser CONTAINER=ALL;
 
 exit;
+```
 
 ## Kafka-ui URL
 http://localhost:8080/
