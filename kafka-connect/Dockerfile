@@ -16,5 +16,8 @@
 
 FROM confluentinc/cp-kafka-connect:5.4.9-1-ubi8
 
-COPY debezium-connector-oracle /usr/share/java/debezium-connector-oracle
+COPY debezium-connector-oracle-1.9.5.Final-plugin.tar.gz /usr/share/java/debezium-connector-oracle-1.9.5.Final-plugin.tar.gz
+RUN tar -xzvf  /usr/share/java/debezium-connector-oracle-1.9.5.Final-plugin.tar.gz
+
+
 
