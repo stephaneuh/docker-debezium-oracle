@@ -1,3 +1,6 @@
+# Setup to replicate Oracle tables to Snowflake tables using Change Data Capture
+
+
 
 # Prerequisites
 ## Create Kafka-connect docker image
@@ -120,9 +123,8 @@ GRANT SELECT ON V_$TRANSACTION TO c##dbzuser CONTAINER=ALL;
 exit;
 ```
 
-# Kafka configs
-## Kafka-ui URL
-http://localhost:8080/
+# Kafka User/ACLs/Consumer groups configs
+
 
 # Kafka-Connect configs
 ## Deploy Debezium connector  for Oracle
@@ -147,3 +149,10 @@ curl --location --request POST 'http://localhost:8083/connectors' \
 '
 '
 ```
+
+# Monitoring
+## Kafka-ui URL
+http://localhost:8080/
+
+## Debezium-ui URL
+http://localhost:8082/
