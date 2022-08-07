@@ -1,5 +1,31 @@
 
-# Oracle
+# Prerequisites
+## Create Kafka-connect docker image
+This step will add the debezium for oracle connector to the base kafka-connect image
+
+```
+cd kafka-connect
+docker build -t cp-kafka-connect-dbz-ora:0.1 .
+```
+The new image is named: **cp-kafka-connect-dbz-ora:0.1**
+
+
+## Create Oracle docker image
+
+```
+cd oracle/dockerfiles
+./buildContainerImage.sh -v 19.3.0 -i -e
+```
+
+The new image is named: **oracle/database:19.3.0-ee**
+
+# Start docker-compose
+
+```
+docker-compose up -d
+```
+
+# Prepare Oracle database
 ## SQL plus from oracle container
 ```
 sqlplus sys/password@//localhost:1521/ORCLCDB as sysdba
@@ -91,15 +117,6 @@ exit;
 ## Kafka-ui URL
 http://localhost:8080/
 
-
-# Kafka-Connect
-## Create Kafka-connect docker image
-This step will add the debezium for oracle connector to kafka-connect
-
-```
-cd kafka-connect
-docker build -t cp-kafka-connect-dbz-ora:0.1 .
-```
 
 ## Deploy Debezium connector  for Oracle
 ```
