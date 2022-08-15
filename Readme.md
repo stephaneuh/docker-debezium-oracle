@@ -2,6 +2,19 @@
 
 ```mermaid
 graph TD;
+
+oracle/database:19.3.0-ee
+
+confluentinc/cp-zookeeper:7.2.1
+confluentinc/cp-kafka:7.2.1
+confluentinc/cp-schema-registry:7.2.1
+
+cp-kafka-connect-dbz-ora:0.1
+
+provectuslabs/kafka-ui
+
+debezium/debezium-ui
+
     A-->B;
     A-->C;
     B-->D;
@@ -130,6 +143,14 @@ exit;
 ```
 
 # Kafka User/ACLs/Consumer groups configs
+
+## Get Kafka cluster ID
+```
+curl -s --request GET 'http://localhost:8086/v3/clusters' | jq '.data[0].cluster_id'
+"DNtFlK1mQfO51WzTrMgBRA"
+```
+
+## Kafka service account
 
 
 # Kafka-Connect configs
